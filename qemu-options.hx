@@ -989,7 +989,7 @@ DEF("spice", HAS_ARG, QEMU_OPTION_spice,
     "       [,tls-channel=[main|display|cursor|inputs|record|playback]]\n"
     "       [,plaintext-channel=[main|display|cursor|inputs|record|playback]]\n"
     "       [,sasl][,password=<secret>][,disable-ticketing]\n"
-    "       [,image-compression=[auto_glz|auto_lz|quic|glz|lz|off]]\n"
+    "       [,image-compression=[auto_glz|auto_lz|quic|glz|lz|lz4|off]]\n"
     "       [,jpeg-wan-compression=[auto|never|always]]\n"
     "       [,zlib-glz-wan-compression=[auto|never|always]]\n"
     "       [,streaming-video=[off|all|filter]][,disable-copy-paste]\n"
@@ -1065,7 +1065,7 @@ channels.  The special name "default" can be used to set the default
 mode.  For channels which are not explicitly forced into one mode the
 spice client is allowed to pick tls/plaintext as he pleases.
 
-@item image-compression=[auto_glz|auto_lz|quic|glz|lz|off]
+@item image-compression=[auto_glz|auto_lz|quic|glz|lz|lz4|off]
 Configure image compression (lossless).
 Default is auto_glz.
 
