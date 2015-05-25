@@ -485,6 +485,9 @@ static QemuOptsList qemu_spice_opts = {
             .name = "streaming-video",
             .type = QEMU_OPT_STRING,
         },{
+            .name = "video-codecs",
+            .type = QEMU_OPT_STRING,
+        },{
             .name = "agent-mouse",
             .type = QEMU_OPT_BOOL,
         },{
@@ -777,6 +780,14 @@ void qemu_spice_init(void)
         spice_server_set_streaming_video(spice_server, streaming_video);
     } else {
         spice_server_set_streaming_video(spice_server, SPICE_STREAM_VIDEO_OFF);
+    }
+
+    str = qemu_opt_get(opts, "video-codecs");
+    if (str) {
+        if (spice_server_set_video_codecs(spice_server, str)) {
+            error_report("Invalid video codecs.");
+            exit(1);
+        }
     }
 
     spice_server_set_agent_mouse

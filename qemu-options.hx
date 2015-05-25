@@ -990,6 +990,7 @@ DEF("spice", HAS_ARG, QEMU_OPTION_spice,
     "       [,jpeg-wan-compression=[auto|never|always]]\n"
     "       [,zlib-glz-wan-compression=[auto|never|always]]\n"
     "       [,streaming-video=[off|all|filter]][,disable-copy-paste]\n"
+    "       [,video-codecs=<encoder1>:<codec1>[;<encoder2>:<codec2>]]\n"
     "       [,disable-agent-file-xfer][,agent-mouse=[on|off]]\n"
     "       [,playback-compression=[on|off]][,seamless-migration=[on|off]]\n"
     "   enable spice\n"
@@ -1073,6 +1074,13 @@ Default is auto.
 
 @item streaming-video=[off|all|filter]
 Configure video stream detection.  Default is filter.
+
+@item video-codecs=encoder:codec[;encoder2:codec2]
+Configure what video codecs to use.  It is a semi colon separated
+list of encoder/codec pairs to try, in preference order.
+An encoder tyep of 'spice' selects built in codecs.  An encoder
+of 'gstreamer' indicates gstreamer.  The codec is the type
+of encoder; e.g. mjpeg, vp8, etc.  Default is spice:mjpeg.
 
 @item agent-mouse=[on|off]
 Enable/disable passing mouse events via vdagent.  Default is on.
