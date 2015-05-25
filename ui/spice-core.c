@@ -347,6 +347,9 @@ static const char *compression_names[] = {
     [ SPICE_IMAGE_COMPRESS_QUIC ]     = "quic",
     [ SPICE_IMAGE_COMPRESS_GLZ ]      = "glz",
     [ SPICE_IMAGE_COMPRESS_LZ ]       = "lz",
+#if SPICE_SERVER_VERSION >= 0x000c07
+    [ SPICE_IMAGE_COMPRESS_LZ4 ]      = "lz4",
+#endif
 };
 #define parse_compression(_name)                                        \
     parse_name(_name, "image compression",                              \
